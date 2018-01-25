@@ -1,41 +1,12 @@
+require("./server/passport.js");
+
 const express = require("express");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-const Strategy = require("passport-local").Strategy;
 const db = require("./db");
 const { mongoose } = require("./server/db/mongoose");
 const { User } = require("./models/user");
 const port = process.env.PORT || 3000;
-
-passport.use(
-  new Strategy(function(username, password, cb) {
-    db.users.findByUsername(username, function(err, user) {
-      if (err) {
-        return cb(err);
-      }
-      if (!user) {
-        return cb(null, false);
-      }
-      if (user.password != password) {
-        return cb(null, false);
-      }
-      return cb(null, user);
-    });
-  })
-);
-
-passport.serializeUser(function(user, cb) {
-  cb(null, user.id);
-});
-
-passport.deserializeUser(function(id, cb) {
-  db.users.findById(id, function(err, user) {
-    if (err) {
-      return cb(err);
-    }
-    cb(null, user);
-  });
-});
 
 var app = express();
 
@@ -67,12 +38,16 @@ app.get("/", function(req, res) {
   res.render("home", { user: req.user });
 });
 
+app.get("/signup", (req, res) => {
+  res.render("signup");
+});
+
 app.get("/login", function(req, res) {
   res.render("login");
 });
 
 // Testing through Postman
-app.post("/users", (req, res) => {
+app.post("/signup", (req, res) => {
   console.log(req.body);
   let user = new User({
     firstName: req.body.firstName,
@@ -84,7 +59,7 @@ app.post("/users", (req, res) => {
   user
     .save()
     .then(user => {
-      res.send(user);
+      res.redirect("/");
     })
     .catch(e => {
       console.log("error", e);
