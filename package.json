@@ -1,22 +1,18 @@
 {
   "name": "express-4.x-local-example",
   "version": "0.0.0",
-  "description": "Express 4.x app using Passport for authentication with username and password.",
-  "keywords": [
-    "example",
-    "express",
-    "passport"
-  ],
-  "author": "Jared Hanson",
+  "description":
+    "Twitter clone using Passport for authentication with username and password.",
+  "keywords": ["projects", "express", "passport"],
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "6.3.0"
+  },
+  "author": "Saul Ocampo",
   "license": "Unlicense",
-  "homepage": "https://github.com/passport/express-4.x-local-example",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/passport/express-4.x-local-example.git"
-  },
-  "bugs": {
-    "url": "https://github.com/passport/express-4.x-local-example/issues"
-  },
+  "homepage": "https://github.com/",
   "dependencies": {
     "body-parser": "^1.13.3",
     "connect-ensure-login": "^0.1.1",
@@ -24,6 +20,8 @@
     "ejs": "^2.3.3",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
+    "mongodb": "^3.0.1",
+    "mongoose": "^4.5.9",
     "morgan": "^1.6.1",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0"
