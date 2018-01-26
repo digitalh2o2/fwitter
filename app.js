@@ -7,6 +7,7 @@ const _ = require("lodash");
 const { mongoose } = require("./server/db/mongoose");
 const { User } = require("./models/user");
 const { Tweet } = require("./models/tweet");
+const { ObjectID } = require("mongodb");
 const port = process.env.PORT || 3000;
 
 var app = express();
@@ -107,6 +108,45 @@ app.post(
       })
       .catch(e => {
         console.log("error", e);
+      });
+  }
+);
+
+app.get(
+  "/tweets",
+  require("connect-ensure-login").ensureLoggedIn(),
+  (req, res) => {
+    Tweet.find({
+      _author: req.user._id
+    })
+      .then(tweets => {
+        res.render("tweets", { tweets });
+      })
+      .catch(e => {
+        res.send("error", e);
+      });
+  }
+);
+
+app.get(
+  "/tweets/:id",
+  require("connect-ensure-login").ensureLoggedIn(),
+  (req, res) => {
+    let id = req.params.id;
+
+    if (!ObjectID.isValid(id)) {
+      return res.status(404).send();
+    }
+
+    Tweet.findOne({
+      _id: id,
+      _author: req.user._id
+    })
+      .then(tweet => {
+        res.render("tweet", { tweet });
+      })
+      .catch(e => {
+        res.send("error", e);
       });
   }
 );
