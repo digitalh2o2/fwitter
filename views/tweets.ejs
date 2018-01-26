@@ -1,5 +1,23 @@
-<p>Your Tweets</p>
-<% tweets.forEach(function(tweet) { %>
-<li><%= tweet.tweetBody %></li>
-<p>View <a href="/tweets/<%= tweet._id %>">tweet</a></p>
-<% }); %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+    <title>Fwitter - Your Tweets</title>
+  </head>
+  <body>
+
+    <%- include('./partials/nav') %>
+
+    <section>
+      <div class="container">
+        <p>Your Tweets</p>
+        <% tweets.forEach(function(tweet) { %>
+        <li><%= tweet.tweetBody %></li>
+        <p>View <a href="/tweets/<%= tweet._id %>">tweet</a></p>
+        <% }); %>
+      </div>
+    </section>
+
+  </body>
+</html>

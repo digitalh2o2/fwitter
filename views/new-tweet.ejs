@@ -1,6 +1,24 @@
-Create New Tweet
-<form action="/tweet" method="post">
-  <label for="tweetBody">Tweet:</label>
-  <textarea name="tweetBody" placeholder="What's on your mind?"></textarea><br>
-  <button type="submit" name="tweet">Tweet</button>
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+    <title>Fwitter - New Tweet</title>
+  </head>
+  <body>
+
+    <%- include('./partials/nav') %>
+
+    <section>
+      <div class="container">
+        <p>Create New Tweet</p>
+        <form action="/tweet" method="post">
+          <label class="label" for="tweetBody">Tweet:</label>
+          <textarea class="input" name="tweetBody" placeholder="What's on your mind?"></textarea><br>
+          <button class="button" type="submit" name="tweet">Tweet</button>
+        </form>
+      </div>
+    </section>
+
+  </body>
+</html>

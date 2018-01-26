@@ -1,13 +1,32 @@
-Please enter details below
-<form action="/signup" method="post">
-  <label for="username">Username:</label>
-  <input type="text" name="username" placeholder="Username" /><br>
-  <label for="email">Email:</label>
-  <input type="text" name="email" placeholder="Email" /><br>
-  <label for="password">Password:</label>
-  <input type="password" name="password" placeholder="Password" /><br>
-  <button type="submit" name="submit">Submit</button>
-</form>
-<form class="" action="index.html" method="post">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+    <title>Fwitter - Sign Up</title>
+  </head>
+  <body>
+
+    <%- include('./partials/nav') %>
+
+    <section>
+      <div class="container">
+        <p>Please enter details below</p>
+        <form action="/signup" method="post">
+          <label class="label" for="username">Username:</label>
+          <input class="input" type="text" name="username" placeholder="Username" /><br>
+          <label class="label" for="email">Email:</label>
+          <input class="input" type="text" name="email" placeholder="Email" /><br>
+          <label class="label" for="password">Password:</label>
+          <input class="input" type="password" name="password" placeholder="Password" /><br>
+          <button class="button is-primary"type="submit" name="submit">Submit</button>
+        </form>
+      </div>
+    </section>
+
+  </body>
+</html>
+
+
 
 </form>
