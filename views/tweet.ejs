@@ -16,10 +16,12 @@
           <p><%= tweet.tweetBody %></p>
           <p><%= tweet.created.toDateString() %></p>
           <a class="button is-primary" href="/tweets/<%= tweet._id %>/edit">Edit Tweet</a>
-          <a class="button is-danger" href="/tweets/:id/delete">Delete Tweet</a>
+          <button class="button is-danger deleteTweet" id=<%= tweet._id %>>Delete Tweet</button>
         </div>
       </div>
     </section>
+    <script type="text/javascript" src="/assets/delete.js">
 
+    </script>
   </body>
 </html>

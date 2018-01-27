@@ -196,6 +196,24 @@ app.put("/tweets/:id", (req, res) => {
     });
 });
 
+app.delete("/tweets/:id/delete", (req, res) => {
+  let id = req.params.id;
+
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+
+  Tweet.findOneAndRemove({
+    _id: id
+  })
+    .then(tweet => {
+      res.send("Tweet deleted!");
+    })
+    .catch(e => {
+      res.status(400).send("Unable to delete tweet!");
+    });
+});
+
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
 });

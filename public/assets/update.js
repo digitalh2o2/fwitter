@@ -19,7 +19,6 @@ function getPromise(e) {
     tweetBody
   };
 
-  debugger;
   var myHeaders = new Headers({
     "Content-Type": "application/json"
   });

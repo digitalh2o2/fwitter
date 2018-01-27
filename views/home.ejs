@@ -8,13 +8,13 @@
 	<body>
 
 		<%- include('./partials/nav') %>
-		
+
 		<section>
 			<div class="container">
 				<% if (!user) { %>
 					<p>Welcome! Please <a href="/login">log in</a> or <a href="/signup">sign up</a> for an account</p>
 				<% } else { %>
-					<p>Hello, <%= user.username %>. View your <a href="/profile">profile</a> or create new <a href="/tweet">tweet</a> .</p>
+					<p>Hello, <%= user.username %>. View your <a href="/profile">profile</a> or tweets <a href="/tweets">View Your Tweets</a> or create new <a href="/tweet">tweet</a> .</p>
 				<% } %>
 			</div>
 		</section>
