@@ -1,4 +1,3 @@
-console.log("hi d");
 let button = document.querySelector(".deleteTweet");
 
 button.addEventListener("click", e => {

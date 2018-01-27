@@ -37,7 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Define routes.
-app.get("/", function(req, res) {
+app.get("/", (req, res) => {
   res.render("home", { user: req.user });
 });
 
@@ -45,26 +45,26 @@ app.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-app.get("/login", function(req, res) {
+app.get("/login", (req, res) => {
   res.render("login");
 });
 
-app.get("/profile", require("connect-ensure-login").ensureLoggedIn(), function(
-  req,
-  res
-) {
-  res.render("profile", { user: req.user });
-});
+app.get(
+  "/profile",
+  require("connect-ensure-login").ensureLoggedIn(),
+  (req, res) => {
+    res.render("profile", { user: req.user });
+  }
+);
 
 app.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/login" }),
-  function(req, res) {
+  (req, res) => {
     res.redirect("/");
   }
 );
 
-// Testing through Postman
 app.post("/signup", (req, res) => {
   let body = _.pick(req.body, [
     "username",
@@ -81,11 +81,11 @@ app.post("/signup", (req, res) => {
       res.redirect("/");
     })
     .catch(e => {
-      console.log("error", e);
+      res.status(400).send("error", e);
     });
 });
 
-app.get("/logout", function(req, res) {
+app.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
@@ -108,7 +108,7 @@ app.post(
         res.redirect("/profile");
       })
       .catch(e => {
-        console.log("error", e);
+        res.status(400).send("error", e);
       });
   }
 );
@@ -124,7 +124,7 @@ app.get(
         res.render("tweets", { tweets });
       })
       .catch(e => {
-        res.send("error", e);
+        res.status(400).send("error", e);
       });
   }
 );
@@ -147,7 +147,7 @@ app.get(
         res.render("tweet", { tweet });
       })
       .catch(e => {
-        res.send("error", e);
+        res.status(400).send("error", e);
       });
   }
 );
@@ -169,7 +169,7 @@ app.get(
         res.render("edit", { tweet });
       })
       .catch(e => {
-        res.send("Error", e);
+        res.status(400).send("Error", e);
       });
   }
 );

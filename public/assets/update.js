@@ -1,11 +1,9 @@
 let tweetBody = document.querySelector("#tweetBody");
-console.log(tweetBody);
 
 let button = document.querySelector(".update");
 
 tweetBody.addEventListener("keyup", e => {
   tweetBody = e.target.textContent;
-  console.log(tweetBody);
 });
 
 button.addEventListener("click", e => {
@@ -31,7 +29,6 @@ function getPromise(e) {
 
   fetch(request)
     .then(res => {
-      console.log(res);
       window.location.replace("/tweets");
     })
     .catch(e => {
