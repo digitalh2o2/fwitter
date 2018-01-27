@@ -24,6 +24,7 @@ app.use(
     extended: true
   })
 );
+app.use(express.static(__dirname + "/public"));
 app.use(
   require("express-session")({
     secret: "keyboard cat",
@@ -150,6 +151,50 @@ app.get(
       });
   }
 );
+
+app.get(
+  "/tweets/:id/edit",
+  require("connect-ensure-login").ensureLoggedIn(),
+  (req, res) => {
+    let id = req.params.id;
+
+    if (!ObjectID.isValid(id)) {
+      return res.status(404).send();
+    }
+
+    Tweet.findById({
+      _id: id
+    })
+      .then(tweet => {
+        res.render("edit", { tweet });
+      })
+      .catch(e => {
+        res.send("Error", e);
+      });
+  }
+);
+
+app.put("/tweets/:id", (req, res) => {
+  let id = req.params.id;
+  let body = _.pick(req.body, ["tweetBody"]);
+
+  Tweet.findOneAndUpdate(
+    {
+      _id: id
+    },
+    { $set: body },
+    { new: true }
+  )
+    .then(tweet => {
+      if (!tweet) {
+        res.status(400).send("Can't find tweet!");
+      }
+      res.send({ tweet });
+    })
+    .catch(e => {
+      res.status(400).send("Unable to edit tweet.");
+    });
+});
 
 app.listen(port, () => {
   console.log(`Started on port ${port}`);

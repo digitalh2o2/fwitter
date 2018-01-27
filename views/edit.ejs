@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+    <title>Fwitter - Edit Tweet</title>
+  </head>
+  <body>
+
+    <%- include('./partials/nav') %>
+
+    <section>
+      <div class="container">
+        <p>Edit Tweet</p>
+        <p contenteditable="true" id="tweetBody"><%= tweet.tweetBody %></p>
+        <button class="button update is-primary" id=<%= tweet._id %> >Update</button>
+      </div>
+    </section>
+    <script type="text/javascript" src="/assets/update.js"></script>
+  </body>
+</html>
