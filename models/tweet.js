@@ -34,6 +34,21 @@ TweetSchema.pre("save", function(next) {
   );
 });
 
+TweetSchema.methods.lowerTweets = function(err, cb) {
+  var tweet = this;
+  User.findOneAndUpdate(
+    { _id: tweet._author },
+    { $inc: { tweets: -1 } },
+    { upsert: true },
+    function(err) {
+      if (err) {
+        console.log(err);
+      }
+      return cb;
+    }
+  );
+};
+
 let Tweet = mongoose.model("Tweet", TweetSchema);
 
 module.exports = { Tweet };

@@ -207,7 +207,8 @@ app.delete("/tweets/:id/delete", (req, res) => {
     _id: id
   })
     .then(tweet => {
-      res.send("Tweet deleted!");
+      tweet.lowerTweets();
+      res.send("Tweet Deleted!");
     })
     .catch(e => {
       res.status(400).send("Unable to delete tweet!");
