@@ -13,8 +13,13 @@ let TweetSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  createdBy: {
+    type: String,
+    required: true
+  },
   _author: {
     type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true
   }
 });
@@ -47,6 +52,16 @@ TweetSchema.methods.lowerTweets = function(err, cb) {
       return cb;
     }
   );
+};
+
+TweetSchema.methods.showOwner = function(err, user) {
+  var tweet = this;
+  User.find({ _id: tweet._author }, function(err) {
+    if (err) {
+      console.log(err);
+    }
+    return user;
+  });
 };
 
 let Tweet = mongoose.model("Tweet", TweetSchema);

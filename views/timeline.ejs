@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Fwitter - Timelne</title>
+  </head>
+  <body>
+
+    <%- include('./partials/nav') %>
+
+    <section>
+      <div class="container">
+        <p>Current Timeline</p>
+          <div class="columns">
+            <div class="column is-4 is-offset-4">
+              <% tweets.forEach(function(tweet) { %>
+                <div class="card ">
+                  <div class="card-content">
+                    <p><%= tweet.tweetBody %></p>
+                    <div class="information">
+                      created by <%= tweet.createdBy %>
+
+                    </div>
+                    <button class="button reveal">View Tweet</button>
+                  </div>
+
+                </div>
+              <% }); %>
+            </div>
+          </div>
+      </div>
+    </section>
+    <script type="text/javascript" src="/assets/timeline.js">
+
+    </script>
+  </body>
+</html>

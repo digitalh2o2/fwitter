@@ -1,12 +1,9 @@
 {
-  "name": "express-4.x-local-example",
+  "name": "Fwitter",
   "version": "0.0.0",
-  "description": "Twitter clone using Passport for authentication with username and password.",
-  "keywords": [
-    "projects",
-    "express",
-    "passport"
-  ],
+  "description":
+    "Twitter clone using Passport for authentication with username and password.",
+  "keywords": ["projects", "express", "passport"],
   "scripts": {
     "start": "node app.js"
   },

@@ -42,11 +42,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/signup", (req, res) => {
-  res.render("signup");
+  res.render("signup", { user: req.user });
 });
 
 app.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", { user: req.user });
 });
 
 app.get(
@@ -91,15 +91,17 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/tweet", (req, res) => {
-  res.render("new-tweet");
+  res.render("new-tweet", { user: req.user });
 });
 
 app.post(
   "/tweet",
   require("connect-ensure-login").ensureLoggedIn(),
   (req, res) => {
+    console.log(req);
     let myTweet = new Tweet({
       tweetBody: req.body.tweetBody,
+      createdBy: req.user.username,
       _author: req.user._id
     });
 
@@ -121,7 +123,7 @@ app.get(
       _author: req.user._id
     })
       .then(tweets => {
-        res.render("tweets", { tweets });
+        res.render("tweets", { tweets, user: req.user });
       })
       .catch(e => {
         res.status(400).send("error", e);
@@ -144,7 +146,7 @@ app.get(
       _author: req.user._id
     })
       .then(tweet => {
-        res.render("tweet", { tweet });
+        res.render("tweet", { tweet, user: req.user });
       })
       .catch(e => {
         res.status(400).send("error", e);
@@ -166,7 +168,7 @@ app.get(
       _id: id
     })
       .then(tweet => {
-        res.render("edit", { tweet });
+        res.render("edit", { tweet, user: req.user });
       })
       .catch(e => {
         res.status(400).send("Error", e);
@@ -214,6 +216,27 @@ app.delete("/tweets/:id/delete", (req, res) => {
       res.status(400).send("Unable to delete tweet!");
     });
 });
+
+app.get(
+  "/timeline",
+  require("connect-ensure-login").ensureLoggedIn(),
+  (req, res) => {
+    Tweet.find()
+      .populate("Tweet")
+      .exec(function(err, tweet) {
+        if (err) {
+          console.log(err);
+        }
+        console.log(tweet);
+      })
+      .then(tweets => {
+        res.render("timeline", { tweets, user: req.user });
+      })
+      .catch(e => {
+        res.status(404).send("Unable to find tweets!");
+      });
+  }
+);
 
 app.listen(port, () => {
   console.log(`Started on port ${port}`);

@@ -9,4 +9,28 @@
       <span></span>
     </div>
   </div>
+  <% if (user) { %>
+  <div class="navbar-end navbar-menu">
+    <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link" href="/profile">
+        Profile
+      </a>
+      <div class="navbar-dropdown is-boxed">
+        <a class="navbar-item" href="/tweet">
+          New Tweet
+        </a>
+        <a class="navbar-item" href="/tweets">
+          Your Tweets
+        </a>
+        <a class="navbar-item" href="/timeline">
+          Timeline
+        </a>
+        <hr class="navbar-divider">
+        <a class="navbar-item" href="/logout">
+          Log Out
+        </a>
+      </div>
+    </div>
+  </div>
+  <% } %>
 </nav>
