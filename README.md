@@ -1,6 +1,6 @@
 # Fwitter
 
-### Basic Twitter clone using Node.js / passportjs
+### Basic Twitter clone using Node.js / passportjs & Bulma
 
 ### Still to do.
 

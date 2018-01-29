@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
     <link rel="stylesheet" href="/css/main.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <title>Fwitter - Timelne</title>
   </head>
   <body>
-
     <%- include('./partials/nav') %>
 
     <section>
@@ -16,24 +16,48 @@
           <div class="columns">
             <div class="column is-4 is-offset-4">
               <% tweets.forEach(function(tweet) { %>
-                <div class="card ">
-                  <div class="card-content">
-                    <p><%= tweet.tweetBody %></p>
-                    <div class="information">
-                      created by <%= tweet.createdBy %>
+                <article class="media-conent ">
+                  <div class="card">
+                    <div class="content">
+                      <p><strong>@<%= tweet.createdBy %></strong>
+                        <small><%= tweet.created.toDateString() %></small></p>
+
+                        <p><%= tweet.tweetBody %></p>
+                        <nav class="level is-mobile">
+                          <div class="level-left">
+                            <a class="level-item">
+                              <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                            </a>
+                            <a class="level-item">
+                              <span class="icon is-small retweet"><i class="fas fa-retweet"></i></span>
+                            </a>
+
+                              <% if(tweet.favorited) { %>
+                                <a class="level-item favorite" id=<%= tweet._id %>>
+                                  <span class="information"><%= tweet.favorited %></span>
+                                  <span class="icon is-small love" ><i class="fas fa-heart" ></i></span>
+                                </a>
+                              <% } else { %>
+                                <a class="level-item favorite" id=<%= tweet._id %>>
+
+                                  <span class="information"><input class="information" type="checkbox" name="" ><%= tweet.favorited %></span>
+                                  <span class="icon is-small " ><i class="fas fa-heart" ></i></span>
+                                </a>
+                              <% } %>
+
+                          </div>
+                        </nav>
 
                     </div>
-                    <button class="button reveal">View Tweet</button>
                   </div>
 
-                </div>
+                </article>
               <% }); %>
             </div>
           </div>
       </div>
     </section>
     <script type="text/javascript" src="/assets/timeline.js">
-
     </script>
   </body>
 </html>

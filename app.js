@@ -238,6 +238,26 @@ app.get(
   }
 );
 
+app.put("/timeline/:id", (req, res) => {
+  let id = req.params.id;
+  let body = req.body.favorited;
+
+  Tweet.findById(id, function(err, tweet) {
+    if (err) return err;
+
+    tweet.favorited = body;
+
+    tweet
+      .save()
+      .then(tweet => {
+        res.send("Tweet favorited");
+      })
+      .catch(e => {
+        res.status(404).send("Error", e);
+      });
+  });
+});
+
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
 });

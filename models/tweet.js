@@ -13,6 +13,10 @@ let TweetSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  favorited: {
+    type: Boolean,
+    default: false
+  },
   createdBy: {
     type: String,
     required: true

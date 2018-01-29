@@ -6,3 +6,16 @@
 .information {
   display: none;
 }
+
+.card {
+  padding-left: 10px;
+}
+
+.level {
+  padding-bottom: 10px;
+}
+
+.love {
+  transform: scale(1.2);
+  color: red;
+}
