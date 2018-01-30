@@ -57,6 +57,25 @@ app.get(
   }
 );
 
+app.get(
+  "/profile/:id",
+  require("connect-ensure-login").ensureLoggedIn(),
+  (req, res) => {
+    let id = req.params.id;
+    let field = req.user.username;
+
+    User.findById({
+      _id: id
+    })
+      .then(user => {
+        res.render("profile", { user, viewer: req.user });
+      })
+      .catch(e => {
+        res.status(404).send("Error", e);
+      });
+  }
+);
+
 app.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/login" }),
@@ -98,7 +117,6 @@ app.post(
   "/tweet",
   require("connect-ensure-login").ensureLoggedIn(),
   (req, res) => {
-    console.log(req);
     let myTweet = new Tweet({
       tweetBody: req.body.tweetBody,
       createdBy: req.user.username,
@@ -107,7 +125,7 @@ app.post(
 
     myTweet
       .save(tweet => {
-        res.redirect("/profile");
+        res.redirect("/timeline");
       })
       .catch(e => {
         res.status(400).send("error", e);
@@ -257,6 +275,30 @@ app.put("/timeline/:id", (req, res) => {
       });
   });
 });
+
+app.post(
+  "/follow/:id",
+  require("connect-ensure-login").ensureLoggedIn(),
+  (req, res) => {
+    let id = req.params.id;
+    let follower = req.user._id;
+
+    User.findById(id, function(err, user) {
+      if (err) return err;
+
+      user.following.push({ _id: follower });
+      user
+        .save()
+        .then(user => {
+          user.addFollower();
+          res.redirect("/");
+        })
+        .catch(e => {
+          res.status(404).send("Error", e);
+        });
+    });
+  }
+);
 
 app.post(
   "/timeline/:id/comments",

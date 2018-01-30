@@ -12,10 +12,6 @@
   display: none;
 }
 
-.creator {
-  display: none;
-}
-
 .card {
   padding: 10px;
   margin-bottom: 25px;
@@ -26,13 +22,14 @@
   border-radius: 1%;
   background: rgb(214, 216, 218);
   color: white;
+  font-size: 1.2em;
   margin-bottom: 5px;
   text-align: right;
 }
 
-.level {
+/*.level {
   padding-bottom: 10px;
-}
+}*/
 
 .love {
   transform: scale(1.2);

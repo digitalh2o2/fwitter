@@ -5,6 +5,7 @@
 		<title>Fwitter</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
 		<link rel="stylesheet" href="/css/main.css">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
 	</head>
 	<body>
 
@@ -20,7 +21,7 @@
 				<% } else { %>
 					<div class="has-text-centered">
 						<h1 class="title">Welcome back, <%= user.username %>!</h1>
-						<a class="button" href="/profile">View Profile</a> <a class="button" href="/tweets">View Your Tweets</a> <a class="button" href="/tweet">Create Tweet</a>
+						<a class="button" href="/profile/<%= user._id %>">View Profile</a> <a class="button" href="/tweets">View Your Tweets</a> <a class="button" href="/tweet">Create Tweet</a>
 					</div>
 
 				<% } %>

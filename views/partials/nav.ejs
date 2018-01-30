@@ -1,7 +1,7 @@
 <nav class="navbar is-info" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item subtitle" href="/">
-      Fwitter
+      Fwitter<i class="fab fa-twitter" data-fa-transform="rotate-180" ></i>
     </a>
     <div class="navbar-burger burger">
       <span></span>
@@ -12,13 +12,10 @@
   <% if (user) { %>
   <div class="navbar-end navbar-menu">
     <div class="navbar-item has-dropdown is-hoverable">
-      <a class="navbar-link" href="/profile">
-        Profile
+      <a class="navbar-link" href="/tweet">
+        <p>New Tweet <i class="far fa-paper-plane"></i></p>
       </a>
       <div class="navbar-dropdown is-boxed">
-        <a class="navbar-item" href="/tweet">
-          New Tweet
-        </a>
         <a class="navbar-item" href="/tweets">
           Your Tweets
         </a>

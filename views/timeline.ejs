@@ -15,12 +15,11 @@
         <p class="title has-text-centered">Current Timeline</p>
           <div class="columns">
             <div class="column is-4 is-offset-4">
-
                 <article class="media-conent ">
                   <% tweets.forEach(function(tweet) { %>
                   <div class="card">
                     <div class="content">
-                      <p><strong >@<%= tweet.createdBy %></strong>
+                      <p><strong><a href="/profile/<%= tweet._author %>/">@<%= tweet.createdBy %></a></strong>
                         <small><%= tweet.created.toDateString() %></small></p>
 
                         <p><%= tweet.tweetBody %></p>

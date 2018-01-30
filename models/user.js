@@ -21,6 +21,12 @@ let UserSchema = new mongoose.Schema({
     count: 0,
     default: 0
   },
+  following: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ],
   email: {
     type: String,
     required: true,
@@ -44,6 +50,21 @@ UserSchema.methods.toJSON = function() {
   var userObject = user.toObject();
 
   return _.pick(userObject, ["_id", "email"]);
+};
+
+UserSchema.methods.addFollower = function(err, cb) {
+  var user = this;
+  User.findOneAndUpdate(
+    { _id: user._id },
+    { $inc: { followers: 1 } },
+    { upsert: true },
+    function(err) {
+      if (err) {
+        console.log(err);
+      }
+      return cb;
+    }
+  );
 };
 
 UserSchema.pre("save", function(next) {
