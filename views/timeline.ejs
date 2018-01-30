@@ -12,45 +12,59 @@
 
     <section>
       <div class="container">
-        <p>Current Timeline</p>
+        <p class="title has-text-centered">Current Timeline</p>
           <div class="columns">
             <div class="column is-4 is-offset-4">
-              <% tweets.forEach(function(tweet) { %>
+
                 <article class="media-conent ">
+                  <% tweets.forEach(function(tweet) { %>
                   <div class="card">
                     <div class="content">
-                      <p><strong>@<%= tweet.createdBy %></strong>
+                      <p><strong >@<%= tweet.createdBy %></strong>
                         <small><%= tweet.created.toDateString() %></small></p>
 
                         <p><%= tweet.tweetBody %></p>
                         <nav class="level is-mobile">
                           <div class="level-left">
-                            <a class="level-item">
-                              <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                            </a>
-                            <a class="level-item">
-                              <span class="icon is-small retweet"><i class="fas fa-retweet"></i></span>
-                            </a>
+
 
                               <% if(tweet.favorited) { %>
+
                                 <a class="level-item favorite" id=<%= tweet._id %>>
                                   <span class="information"><%= tweet.favorited %></span>
                                   <span class="icon is-small love" ><i class="fas fa-heart" ></i></span>
                                 </a>
-                              <% } else { %>
-                                <a class="level-item favorite" id=<%= tweet._id %>>
 
+                              <% } else { %>
+
+                                <a class="level-item favorite" id=<%= tweet._id %>>
                                   <span class="information"><input class="information" type="checkbox" name="" ><%= tweet.favorited %></span>
                                   <span class="icon is-small " ><i class="fas fa-heart" ></i></span>
                                 </a>
-                              <% } %>
 
+                              <% } %>
                           </div>
                         </nav>
+                        <% if (tweet.comments.length > 0) { %>
+                          <% tweet.comments.forEach(function(comment) { %>
+                            <div class="comment">
+                              <p><small>@<%= comment.commenterName%> commented:</small></p>
+                              <p><%= comment.body %></p>
+                            </div>
 
+                          <% }); %>
+                        <% } %>
+                        <div class="comments">
+                          <form class="form" action="/timeline/<%=tweet._id %>/comments" method="post">
+                            <div class="">
+                              <textarea class="textarea" name="body" placeholder="Enter Your Comment"></textarea>
+
+                            <button class="button is-info" type="submit">Comment</button>
+                            </div>
+                          </form>
+                        </div>
                     </div>
                   </div>
-
                 </article>
               <% }); %>
             </div>

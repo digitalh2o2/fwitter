@@ -227,7 +227,6 @@ app.get(
         if (err) {
           console.log(err);
         }
-        console.log(tweet);
       })
       .then(tweets => {
         res.render("timeline", { tweets, user: req.user });
@@ -250,6 +249,7 @@ app.put("/timeline/:id", (req, res) => {
     tweet
       .save()
       .then(tweet => {
+        tweet.lowerTweets();
         res.send("Tweet favorited");
       })
       .catch(e => {
@@ -257,6 +257,35 @@ app.put("/timeline/:id", (req, res) => {
       });
   });
 });
+
+app.post(
+  "/timeline/:id/comments",
+  require("connect-ensure-login").ensureLoggedIn(),
+  (req, res) => {
+    let id = req.params.id;
+    let body = req.body.body;
+    let user = req.user.username;
+    if (!req.body.body) {
+      return res.redirect("/timeline");
+    }
+
+    Tweet.findById(id, function(err, tweet) {
+      if (err) return err;
+
+      tweet.comments.push({ body: body, commenterName: user });
+
+      tweet
+        .save()
+        .then(tweet => {
+          tweet.lowerTweets();
+          res.redirect("/timeline");
+        })
+        .catch(e => {
+          res.status(404).send("Error", e);
+        });
+    });
+  }
+);
 
 app.listen(port, () => {
   console.log(`Started on port ${port}`);

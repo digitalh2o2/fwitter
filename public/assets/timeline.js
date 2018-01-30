@@ -1,5 +1,3 @@
-let reveal = document.getElementsByClassName("reveal");
-let retweet = document.querySelector(".retweet");
 let heart = document.getElementsByClassName("favorite");
 let clicked = document.getElementsByClassName("information");
 
@@ -12,11 +10,6 @@ for (let i = 0; i < heart.length; i++) {
     };
   }
 }
-//
-// heart.addEventListener("click", e => {
-//   heart.classList.toggle("love");
-//   favorite(e);
-// });
 
 function favorite(target, box) {
   let id = target;

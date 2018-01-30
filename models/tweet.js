@@ -25,7 +25,23 @@ let TweetSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true
-  }
+  },
+  comments: [
+    {
+      body: {
+        type: String,
+        default: ""
+      },
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      },
+      commenterName: {
+        type: String,
+        default: ""
+      }
+    }
+  ]
 });
 
 TweetSchema.pre("save", function(next) {

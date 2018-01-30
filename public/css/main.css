@@ -3,12 +3,31 @@
   justify-content: center;
 }
 
+.textarea {
+  display: flex;
+  width: auto;
+}
+
 .information {
   display: none;
 }
 
+.creator {
+  display: none;
+}
+
 .card {
-  padding-left: 10px;
+  padding: 10px;
+  margin-bottom: 25px;
+}
+
+.comment {
+  border: 3px solid rgb(230, 231, 231);
+  border-radius: 1%;
+  background: rgb(214, 216, 218);
+  color: white;
+  margin-bottom: 5px;
+  text-align: right;
 }
 
 .level {
