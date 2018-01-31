@@ -7,26 +7,31 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <title>Fwitter - New Tweet</title>
   </head>
-  <body>
+  <body class="site">
 
     <%- include('./partials/nav') %>
 
-    <section>
-      <div class="has-text-centered field">
+    <section class="site-content">
+      <div class="has-text-centered field the-padder">
         <h1 class="title">Create New Tweet</h1>
       </div>
       <div class="input-field">
-        <form action="/tweet" method="post">
-          <div class="field">
-            <label class="label" for="tweetBody">Tweet:</label>
-            <textarea class="textarea" name="tweetBody" placeholder="What's on your mind?"></textarea><br>
-          </div>
-          <div class="field">
-            <button class="button" type="submit" name="tweet">Tweet</button>
-          </div>
-        </form>
+        <div class="card">
+          <form action="/tweet" method="post">
+            <div class="field">
+              <label class="label" for="tweetBody">Tweet:</label>
+              <textarea class="textarea" name="tweetBody" placeholder="What's on your mind?"></textarea><br>
+            </div>
+            <div class="field">
+              <button class="button is-primary" type="submit" name="tweet">Tweet</button>
+            </div>
+          </form>
+        </div>
+
       </div>
     </section>
+
+    <%- include('./partials/footer') %>
 
   </body>
 </html>

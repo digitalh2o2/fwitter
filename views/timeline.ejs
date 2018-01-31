@@ -7,11 +7,13 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <title>Fwitter - Timelne</title>
   </head>
-  <body>
+  <body class="site">
+
     <%- include('./partials/nav') %>
-    <section>
+
+    <section class="site-content">
       <div class="container">
-        <p class="title has-text-centered">Current Timeline</p>
+        <p class="title has-text-centered the-padder">Current Timeline</p>
           <div class="columns">
             <div class="column is-4 is-offset-4">
               <!-- iterate over each tweet from database -->
@@ -69,7 +71,9 @@
           </div>
       </div>
     </section>
-    <script type="text/javascript" src="/assets/timeline.js">
-    </script>
+    <script type="text/javascript" src="/assets/timeline.js"></script>
+
+    <%- include('./partials/footer') %>
+
   </body>
 </html>

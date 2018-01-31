@@ -7,11 +7,11 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <title>Fwitter - Tweet</title>
   </head>
-  <body>
+  <body class="site">
 
     <%- include('./partials/nav') %>
 
-    <section>
+    <section class="site-content">
       <div class="columns">
         <div class="column is-4 is-offset-4 the-padder">
           <div class="card">
@@ -21,15 +21,16 @@
             <p class="subtitle"><%= tweet.tweetBody %></p>
             <small><%= tweet.created.toDateString() %></small>
             <br>
-            <a class="button is-primary" href="/tweets/<%= tweet._id %>/edit">Edit Tweet</a>
-            <button class="button is-danger deleteTweet" id=<%= tweet._id %>>Delete Tweet</button>
+            <a class="button is-primary" href="/tweets/<%= tweet._id %>/edit">Edit Tweet &nbsp <i class="far fa-edit"></i></a>
+            <button class="button is-danger deleteTweet" id=<%= tweet._id %>>Delete Tweet &nbsp <i class="far fa-trash-alt"></i></button>
           </div>
         </div>
 
       </div>
     </section>
-    <script type="text/javascript" src="/assets/delete.js">
+    <script type="text/javascript" src="/assets/delete.js"></script>
 
-    </script>
+    <%- include('./partials/footer') %>
+
   </body>
 </html>

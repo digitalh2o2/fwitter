@@ -4,6 +4,16 @@
   ==============
 */
 
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
+
 .input-field {
   display: flex;
   justify-content: center;
@@ -61,9 +71,31 @@
   color: red;
 }
 
-/*.level {
-  padding-bottom: 10px;
-}*/
+/*
+  ==============
+  Footer
+  ==============
+*/
+
+.footer {
+  height: 15px;
+  bottom: 0;
+  background-color: #209cee;
+}
+
+.footer p {
+  color: white;
+}
+
+.footer a {
+  color: white;
+}
+
+/*
+  ==============
+  Misc
+  ==============
+*/
 
 .the-padder {
   padding-top: 25px;

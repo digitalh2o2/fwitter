@@ -4,31 +4,34 @@
     <meta charset="utf-8">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
     <link rel="stylesheet" href="/css/main.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>    
+    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <title>Fwitter - Sign Up</title>
   </head>
-  <body>
+  <body class="site">
 
     <%- include('./partials/nav') %>
 
-    <section>
+    <section class="site-content">
       <div class="container">
-        <p>Please enter details below</p>
-        <form action="/signup" method="post">
-          <label class="label" for="username">Username:</label>
-          <input class="input" type="text" name="username" placeholder="Username" /><br>
-          <label class="label" for="email">Email:</label>
-          <input class="input" type="text" name="email" placeholder="Email" /><br>
-          <label class="label" for="password">Password:</label>
-          <input class="input" type="password" name="password" placeholder="Password" /><br>
-          <button class="button is-primary"type="submit" name="submit">Submit</button>
-        </form>
+        <p class="has-text-centered">Please enter details below</p>
+        <div class="columns">
+          <div class="column is-4 is-offset-4">
+            <form action="/signup" method="post">
+              <label class="label" for="username">Username:</label>
+              <input class="input" type="text" name="username" placeholder="Username" /><br>
+              <label class="label" for="email">Email:</label>
+              <input class="input" type="text" name="email" placeholder="Email" /><br>
+              <label class="label" for="password">Password:</label>
+              <input class="input" type="password" name="password" placeholder="Password" />
+              <br><br>
+              <button class="button is-primary"type="submit" name="submit">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
 
+    <%- include('./partials/footer') %>
+
   </body>
 </html>
-
-
-
-</form>

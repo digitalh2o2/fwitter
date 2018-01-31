@@ -7,11 +7,11 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <title>Fwitter - Your Tweets</title>
   </head>
-  <body>
+  <body class="site">
 
     <%- include('./partials/nav') %>
 
-    <section>
+    <section class="site-content">
       <div class="input-field">
         <p class="title">Your Tweets</p>
       </div>
@@ -28,8 +28,9 @@
           </div>
         </div>
       <% }); %>
-
     </section>
+
+    <%- include('./partials/footer') %>
 
   </body>
 </html>
