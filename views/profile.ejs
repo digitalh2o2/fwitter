@@ -11,29 +11,48 @@
 
     <%- include('./partials/nav') %>
 
-    <section>
-      <div class="container">
-        <p>
-        ID: <%= user.id %><br/>
-        Username: <%= user.username %><br/>
-        <% if (user.email) { %>
-        Email: <%= user.email %><br/>
-        <% } %>
-        Followers: <%= user.followers %><br>
-        Tweets: <%= user.tweets %>
-        </p>
-        <% if (viewer._id.toString() === user._id.toString()) { %>
-          <a href="/tweets">View Your Tweets</a>
-          <br>
-          <a href="/logout">Log out</a>
-        <% } else if (user.following.toString().includes(viewer._id.toString())) { %>
-          <p>You're already following this user</p>
-        <% } else { %>
-          <form class="form" action="/follow/<%= user._id %>" method="post">
-            <button type="submit" class="button is-info"><i class="fas fa-user-plus"></i>Follow <%= user.username %></button>
-          </form>
-        <% } %>
+    <section class="container">
+      <div class="columns">
+
+        <div class="column is-one-quarter is-offset-one-quarter the-padder">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">Profile</p>
+            </header>
+              <p class="subtitle"><i class="far fa-user"></i> Username -- <%= user.username %></p>
+
+            <p class="subtitle"><i class="far fa-envelope"></i> Email -- <%= user.email %></p>
+
+            <p class="subtitle"><i class="fas fa-users"></i> Followers -- <%= user.followers %></p>
+            <p class="subtitle"><i class="fab fa-twitter" data-fa-transform="rotate-90"></i> Tweets -- <%= user.tweets %></p>
+          </div>
+
+        </div>
+
+        <div class="column is-4 profile-options">
+          <% if (viewer._id.toString() === user._id.toString()) { %>
+
+              <a class="button is-link" href="/tweets">View Your Tweets <i class="fab fa-twitter" data-fa-transform="rotate-90"></i></a>
+              &nbsp &nbsp
+              <a class="button is-warning" href="/logout">Log out</a>
+
+
+          <% } else if (user.following.toString().includes(viewer._id.toString())) { %>
+
+              <p>You're already following this user</p>
+
+
+          <% } else { %>
+
+              <form class="form" action="/follow/<%= user._id %>" method="post">
+                <button type="submit" class="button is-info"><i class="fas fa-user-plus"></i>Follow <%= user.username %></button>
+              </form>
+
+          <% } %>
+        </div>
       </div>
+
+
     </section>
 
   </body>

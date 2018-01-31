@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
     <link rel="stylesheet" href="/css/main.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>    
+    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <title>Fwitter - Tweet</title>
   </head>
   <body>
@@ -12,14 +12,20 @@
     <%- include('./partials/nav') %>
 
     <section>
-      <div class="container">
-        <div class="card">
-          <p>Your Tweet</p>
-          <p><%= tweet.tweetBody %></p>
-          <p><%= tweet.created.toDateString() %></p>
-          <a class="button is-primary" href="/tweets/<%= tweet._id %>/edit">Edit Tweet</a>
-          <button class="button is-danger deleteTweet" id=<%= tweet._id %>>Delete Tweet</button>
+      <div class="columns">
+        <div class="column is-4 is-offset-4 the-padder">
+          <div class="card">
+            <div class="card-header">
+              <p class="subtitle">Your Tweet</p>
+            </div>
+            <p class="subtitle"><%= tweet.tweetBody %></p>
+            <small><%= tweet.created.toDateString() %></small>
+            <br>
+            <a class="button is-primary" href="/tweets/<%= tweet._id %>/edit">Edit Tweet</a>
+            <button class="button is-danger deleteTweet" id=<%= tweet._id %>>Delete Tweet</button>
+          </div>
         </div>
+
       </div>
     </section>
     <script type="text/javascript" src="/assets/delete.js">

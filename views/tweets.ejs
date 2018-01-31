@@ -12,13 +12,23 @@
     <%- include('./partials/nav') %>
 
     <section>
-      <div class="container">
-        <p>Your Tweets</p>
-        <% tweets.forEach(function(tweet) { %>
-        <li><%= tweet.tweetBody %></li>
-        <p>View <a href="/tweets/<%= tweet._id %>">tweet</a></p>
-        <% }); %>
+      <div class="input-field">
+        <p class="title">Your Tweets</p>
       </div>
+      <% tweets.forEach(function(tweet) { %>
+        <div class="columns">
+          <div class="column is-4 is-offset-4">
+            <div class="card">
+              <div class="card-header">
+                <p>On <small><%= tweet.created.toDateString() %></small></p>
+              </div>
+              <p class="subtitle"><%= tweet.tweetBody %></p>
+              <p><a class="button is-link" href="/tweets/<%= tweet._id %>"> View tweet <i class="fab fa-twitter" data-fa-transform="rotate-90"></i></a></p>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+
     </section>
 
   </body>

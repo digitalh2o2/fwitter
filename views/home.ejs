@@ -11,17 +11,21 @@
 
 		<%- include('./partials/nav') %>
 
-		<section>
-			<div class="container">
+		<section class="container">
+			<div>
 				<% if (!user) { %>
+
 					<div class="has-text-centered">
 						<h1 class="title">Welcome! Please <a href="/login">log in</a> or <a href="/signup">sign up</a> for an account</h1>
 					</div>
 
 				<% } else { %>
+
 					<div class="has-text-centered">
 						<h1 class="title">Welcome back, <%= user.username %>!</h1>
-						<a class="button" href="/profile/<%= user._id %>">View Profile</a> <a class="button" href="/tweets">View Your Tweets</a> <a class="button" href="/tweet">Create Tweet</a>
+						<a class="button is-info" href="/profile/<%= user._id %>"><i class="fas fa-user"></i>View Profile</a>
+						<a class="button is-link" href="/tweets">View Your Tweets <i class="fab fa-twitter" data-fa-transform="rotate-90"></i></a>
+						<a class="button is-primary" href="/timeline">View Timeline <i class="fas fa-comments"></i></a>
 					</div>
 
 				<% } %>

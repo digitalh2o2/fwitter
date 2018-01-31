@@ -1,12 +1,41 @@
+/*
+  ==============
+  Main Styling
+  ==============
+*/
+
 .input-field {
   display: flex;
   justify-content: center;
+  padding-top: 20px;
 }
 
 .textarea {
   display: flex;
   width: auto;
 }
+
+/*
+  ==============
+  Profile Page
+  ==============
+*/
+
+.profile-options {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card-header {
+  margin-bottom: 10px;
+}
+
+/*
+  ==============
+  Timeline Page
+  ==============
+*/
 
 .information {
   display: none;
@@ -20,18 +49,22 @@
 .comment {
   border: 3px solid rgb(230, 231, 231);
   border-radius: 1%;
-  background: rgb(214, 216, 218);
+  background: rgb(126, 130, 135);
   color: white;
   font-size: 1.2em;
   margin-bottom: 5px;
   text-align: right;
 }
 
+.love {
+  transform: scale(1.2);
+  color: red;
+}
+
 /*.level {
   padding-bottom: 10px;
 }*/
 
-.love {
-  transform: scale(1.2);
-  color: red;
+.the-padder {
+  padding-top: 25px;
 }

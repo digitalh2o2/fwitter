@@ -13,9 +13,22 @@
 
     <section>
       <div class="container">
-        <p>Edit Tweet</p>
-        <p contenteditable="true" id="tweetBody"><%= tweet.tweetBody %></p>
-        <button class="button update is-primary" id=<%= tweet._id %> >Update</button>
+        <div class="columns the-padder">
+          <div class="column is-4 is-offset-one-third">
+            <div class="card">
+              <div class="card-header">
+                <p class="subtitle">Edit Tweet</p>
+              </div>
+              <p class="subtitle" contenteditable="true" id="tweetBody"><%= tweet.tweetBody %></p>
+              <button class="button update is-primary" id=<%= tweet._id %> >Update</button>
+              <button class="button information">Hi From Console</button>
+            </div>
+          </div>
+
+        </div>
+
+
+
       </div>
     </section>
     <script type="text/javascript" src="/assets/update.js"></script>
